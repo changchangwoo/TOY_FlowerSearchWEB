@@ -8,7 +8,6 @@ export default class App{
         this.render()
     }
 
-
     render = () => {
         this.searchSection = new SearchSection({$target : this.$target})
         this.contentsSection = new ContentsSection({$target : this.$target})
