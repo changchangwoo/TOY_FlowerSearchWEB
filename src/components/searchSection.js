@@ -1,7 +1,12 @@
+import SearchResult from "./searchResult.js";
+
 export default class SearchSection {
+    data = []
+
     constructor({ $target }) {
         this.$target = $target
         this.render();
+        this.searchData();
     }
 
     render = () => {
@@ -26,5 +31,24 @@ export default class SearchSection {
         `
 
         this.$target.appendChild($searchSection)
+    }
+
+    searchData = async () => {
+        let $searchInput = document.querySelector('.searchInput')
+        $searchInput.addEventListener("keyup", async e => {
+            if (e.keyCode === 13) {
+                this.setState({data : null, loading : false})
+                const keyword = e.target.value
+                let dataList = await fetchDataList(keyword)
+                this.setState({data : dataList,
+                loading : true})
+                $searchInput.value = ''
+            }
+        });
+    }
+
+    setState = (nextData) => {
+        this.data = nextData;
+        console.log(this.data)
     }
 }

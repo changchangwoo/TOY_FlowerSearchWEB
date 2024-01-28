@@ -8,6 +8,5 @@ export default class ContentsSection {
         let $contentsSection = document.createElement('div')
         $contentsSection.className = "contentsSection"
         this.$target.appendChild($contentsSection)
-
     }
 }
