@@ -26,7 +26,7 @@ export default class SearchSection {
         <input class="searchInput textSmall" placeholder="식물 명을 입력해주세요">
         </input>
         <div class="searchMemoryContainer">
-        <ul class="searchMemoryList">
+        <ul class="searchMemoryList textMini">
         <li>장미</li>
         <li>안개꽃</li>
         <li>들배지기</li>

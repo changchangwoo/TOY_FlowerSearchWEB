@@ -27,13 +27,27 @@ export default class ContentsSection {
             let $plantItems = document.createElement('ul')
             $plantItems.className = "plantItems"
             $plantItems.innerHTML = this.data.map(
-                plant => `<div class="plantItem title=${plant.korNm}>
-                <img src=${plant.imgUrl} alt=${plant.korNm} />
-                <div class="nameKR">${plant.korNm}</div>
-                <div class="FmlyKR">${plant.fmlyKor}</div>
-                </div>
-                `
-            ).join("")
+                plant => {
+                    if (plant.imgUrl === 'null') {
+                        console.log('cehck')
+                        return `
+                      <li class="plantItem title="${plant.korNm}">
+                        <div class="imgnullBox"><span>이미지 준비중</span></div>
+                        <div class="nameKR textSmall">${plant.korNm}</div>
+                        <div class="FmlyKR textMini">${plant.fmlyKor}</div>
+                      </li>
+                    `;
+                    } else {
+                        return `
+                      <li class="plantItem title="${plant.korNm}">
+                        <img src="http://www.nature.go.kr${plant.imgUrl}" alt="${plant.korNm}"/>
+                        <div class="nameKR textSmall">${plant.korNm}</div>
+                        <div class="FmlyKR textMini">${plant.fmlyKor}</div>
+                      </li>
+                    `;
+                    }
+                }
+            ).join("");
             this.$contentsSection.appendChild($plantItems)
 
         } else if (this.data === null && this.loading === true) {
