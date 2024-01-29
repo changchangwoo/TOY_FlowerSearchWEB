@@ -5,12 +5,13 @@ const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 const url = 'http://openapi.nature.go.kr/openapi/service/rest/PlantService/naturalizedSearch2';
 const serviceKey = 'kHnTn7oETYUtW1eKWdJn8Go%2B6AQppJLnxRtxb3rn4JmDxLYB9bvufX6M6rDhGeiNEyajV2ADU82A%2B%2Bu1WnpSNA%3D%3D';
 const st = '1';
-const numOfRows = '10';
+const numOfRows = '30';
 const pageNo = '1';
 
 
 const fetchDataList = async (keyowrd) => {
     let sw = keyowrd
+    let dataList = []
 
     const queryParams = new URLSearchParams({
         serviceKey,
@@ -30,12 +31,9 @@ const fetchDataList = async (keyowrd) => {
         return response.text();
     })
     .then(data => {
-        let dataList = []
         let xmlParser = new DOMParser();
         let xmlDoc = xmlParser.parseFromString(data, "text/xml")
-        console.log(xmlDoc)
         let value = xmlDoc.getElementsByTagName("item")
-        console.log(value)
         for (let i = 0; i < value.length; i++) {
             dataList.push({
                 "korNm": value[i].getElementsByTagName("korNm")[0]?.textContent || 'null',
@@ -44,12 +42,12 @@ const fetchDataList = async (keyowrd) => {
                 "gnusKor": value[i].getElementsByTagName("gnusKor")[0]?.textContent || 'null'
             })
         }
-        console.log(dataList)
-        return dataList
     })
     .catch(error => {
         console.error('Fetch 에러:', error);
     });
+
+    return dataList.length > 0 ? dataList : null
 
 }
 
