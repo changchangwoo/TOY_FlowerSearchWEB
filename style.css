@@ -142,3 +142,34 @@ body {
     padding: 50px 100px 50px 100px;
 
 }
+
+/* 식물 검색 결과 */
+.resultMessage {
+    font-family: "pretendard";
+    text-align: center;
+    font-weight: 500;
+}
+
+.searchLen {
+    font-family: "pretendard";
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.plantItems {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: auto(200px);
+    grid-column-gap: 20px;
+}
+
+.plantItems > img {
+    width: 100%;
+    height: 142px;
+    border-radius: 8px;
+}
+
+.nameKR {
+    font-family: "pretendard";
+    font-weight: 500;
+}
