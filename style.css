@@ -48,6 +48,7 @@ ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 10;
     /* 변경된 부분 */
 }
 
@@ -110,7 +111,7 @@ ul {
     padding-right: 20px;
     text-align: right;
     display: flex;
-    background-color: #F1F2F3;
+    background-color: #DDDDDD;
 }
 
 .searchEngineContainer {
@@ -131,8 +132,10 @@ ul {
 
 .searchMemoryList > li {
     display: flex;
-    width: 50px;
+    width: auto;
     height: 20px;
+    padding: 10px;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     background-color: #087C37;
@@ -140,6 +143,13 @@ ul {
     margin-right: 10px;
     color: white;
     font-family: "pretendard";
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.searchMemoryList > li:hover {
+    opacity: 0.8;
+    scale: 1.1;
 }
 
 /* 검색 창 */
@@ -182,6 +192,22 @@ ul {
     border-radius: 8px;
     width: 100%;
     margin-bottom: 10px;
+}
+
+.plantItem {
+    transition: all 0.3s;
+    opacity: 1;
+    z-index: 5;
+}
+
+.plantItem > span {
+    display: none;
+}
+
+.plantItem:hover {
+    opacity: 0.8;
+    scale: 1.1;
+
 }
 
 .imgnullBox {

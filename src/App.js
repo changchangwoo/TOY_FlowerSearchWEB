@@ -1,5 +1,6 @@
 import SearchSection from "./components/searchSection.js"
 import ContentsSection from "./components/contentsSection.js"
+import DetailSection from "./components/detailSection.js"
 
 export default class App {
     // 컨스트럭터에 변수 선언 다 하고 render을 통해서 화면에 구현
@@ -23,18 +24,43 @@ export default class App {
                     data: response,
                     loading: true
                 }))
-                console.log(this.data)
-            }
+                this.setSession(keyword)
+            },
         })
         this.contentsSection = new ContentsSection({
             $target: this.$target,
-            $$initialData : this.data
+            $initialData : this.data,
+            onClick: (keyword) => {
+                console.log(keyword)
+            }
+        })
+        this.detailSection = new DetailSection({
+            $target : this.$target,
+            $detailData : {
+                visible : false
+            }
         })
     }
 
     setState = (nextData) => {
         this.data = nextData;
         this.contentsSection.setState(nextData)
+        this.searchSection.setSearchMemoryList()
+    }
+
+    setSession = (keyword) => {
+        let currentMemoryList =  this.getSession();
+        currentMemoryList.push(keyword)
+        sessionStorage.setItem("sessionMemoryList", JSON.stringify(currentMemoryList))
+    }
+
+    getSession = () => {
+        let sessionMemoryList = JSON.parse(sessionStorage.getItem("sessionMemoryList"))
+        if(sessionMemoryList === null) return []
+        if(sessionMemoryList.length >= 5) {
+            sessionMemoryList.shift()
+        }
+        return sessionMemoryList
     }
 
 } 
