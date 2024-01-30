@@ -4,6 +4,7 @@ export default class SearchSection {
     constructor({ $target, onSearch }) {
         this.$target = $target
         this.render();
+        this.setSearchMemoryList()
 
         let $searchInput = document.querySelector('.searchInput')
         $searchInput.addEventListener("keyup", async e => {
@@ -11,6 +12,15 @@ export default class SearchSection {
                 const keyword = e.target.value
                 onSearch(keyword);
                 $searchInput.value = ''
+            }
+        });
+
+        let $searchMemoryList = document.querySelector('.searchMemoryList')
+        $searchMemoryList.addEventListener("click", e => {
+            const clickedElement = e.target;
+            if(clickedElement.tagName === "LI") {
+                let clickedText = clickedElement.textContent
+                onSearch(clickedText)
             }
         });
 
@@ -27,10 +37,6 @@ export default class SearchSection {
         </input>
         <div class="searchMemoryContainer">
         <ul class="searchMemoryList textMini">
-        <li>장미</li>
-        <li>안개꽃</li>
-        <li>들배지기</li>
-        <li>금꽃사리</li>
         </ul>
         </div>
         </div>
@@ -38,5 +44,19 @@ export default class SearchSection {
         `
 
         this.$target.appendChild($searchSection)
+    }
+
+    setSearchMemoryList = () => {
+        let sessionMemoryList = JSON.parse(sessionStorage.getItem("sessionMemoryList"))
+        if(sessionMemoryList === null) return
+        else {
+            let $searchMemoryList = document.querySelector('.searchMemoryList')
+            $searchMemoryList.innerHTML = ``
+            $searchMemoryList.innerHTML = sessionMemoryList.map(
+                keyword => {
+                    return `<li>${keyword}</li>`
+                }
+            ).join('')
+        }
     }
 }
