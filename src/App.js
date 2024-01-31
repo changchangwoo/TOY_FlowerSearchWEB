@@ -29,15 +29,21 @@ export default class App {
         })
         this.contentsSection = new ContentsSection({
             $target: this.$target,
-            $initialData : this.data,
+            $initialData: this.data,
             onClick: (keyword) => {
                 console.log(keyword)
+                fetchDetailData(keyword).then((response) => 
+                this.detailSection.setState({
+                    data : response,
+                    visible: true
+                }))
             }
         })
         this.detailSection = new DetailSection({
-            $target : this.$target,
-            $detailData : {
-                visible : false
+            $target: this.$target,
+            $detailData: {
+                data : null,
+                visible: false
             }
         })
     }
@@ -49,15 +55,15 @@ export default class App {
     }
 
     setSession = (keyword) => {
-        let currentMemoryList =  this.getSession();
+        let currentMemoryList = this.getSession();
         currentMemoryList.push(keyword)
         sessionStorage.setItem("sessionMemoryList", JSON.stringify(currentMemoryList))
     }
 
     getSession = () => {
         let sessionMemoryList = JSON.parse(sessionStorage.getItem("sessionMemoryList"))
-        if(sessionMemoryList === null) return []
-        if(sessionMemoryList.length >= 5) {
+        if (sessionMemoryList === null) return []
+        if (sessionMemoryList.length >= 5) {
             sessionMemoryList.shift()
         }
         return sessionMemoryList

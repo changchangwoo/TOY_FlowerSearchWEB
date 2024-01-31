@@ -29,7 +29,7 @@ export default class ContentsSection {
             $plantItems.className = "plantItems"
             $plantItems.innerHTML = this.data.map(
                 plant => {
-                    if (plant.imgUrl === 'null') {
+                    if (plant.imgUrl === 'NONE') {
                         return `
                       <li class="plantItem" title="${plant.korNm}" value>
                         <span class="plantCode">${plant.plantSpecsId}</span>
@@ -42,7 +42,7 @@ export default class ContentsSection {
                         return `
                       <li class="plantItem" title="${plant.korNm}">
                       <span class="plantCode">${plant.plantSpecsId}</span>
-                      <img src="http://www.nature.go.kr${plant.imgUrl}" alt="${plant.korNm}"/>
+                      <img src="${plant.imgUrl}" alt="${plant.korNm}"/>
                         <div class="nameKR textSmall">${plant.korNm}</div>
                         <div class="FmlyKR textMini">${plant.fmlyKor}</div>
                       </li>
@@ -69,12 +69,7 @@ export default class ContentsSection {
     }
 
     addEventPlantItem = ($plantItems) => {
-        console.log('들어는감')
-        console.log($plantItems, this.eventListenerAdded)
-        // if (!$plantItems || this.eventListenerAdded) {
-        //     console.log('나가짐')
-        //     return;
-        // }
+        $plantItems.removeEventListener("click", this.handlePlantItemClick);
         $plantItems.addEventListener("click", e => {
             const clickedElement = e.target.closest('.plantItem');
             if (clickedElement) {
