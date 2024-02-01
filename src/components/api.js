@@ -1,4 +1,4 @@
-const url = '//openapi.nature.go.kr/openapi/service/rest/PlantService/';
+const url = 'https://openapi.nature.go.kr/openapi/service/rest/PlantService/';
 const serviceKey = 'kHnTn7oETYUtW1eKWdJn8Go%2B6AQppJLnxRtxb3rn4JmDxLYB9bvufX6M6rDhGeiNEyajV2ADU82A%2B%2Bu1WnpSNA%3D%3D';
 
 const fetchDataList = async (keyword) => {
