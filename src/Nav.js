@@ -17,8 +17,8 @@ export default class Nav {
 
     changeMode = (e) => {
         let list = []
-        let $App = document.querySelector(".App")
-        let $body = document.querySelector("body")
+        let $App = document.querySelector(".App");
+        let $body = document.querySelector("body");
         let $searchSection = document.querySelector(".searchSection");
         let $contentsSection = document.querySelector(".contentsSection");
         list.push($body, $App, $searchSection, $contentsSection, this.$darkButton)
