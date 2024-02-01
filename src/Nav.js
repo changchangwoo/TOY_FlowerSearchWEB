@@ -21,7 +21,7 @@ export default class Nav {
         let $body = document.querySelector("body")
         let $searchSection = document.querySelector(".searchSection");
         let $contentsSection = document.querySelector(".contentsSection");
-        list.push($body, $App, $searchSection, $contentsSection)
+        list.push($body, $App, $searchSection, $contentsSection, this.$darkButton)
         
         for(let i = 0; i < list.length; i++) {
             if(list[i].classList.contains('darkMode')) {
