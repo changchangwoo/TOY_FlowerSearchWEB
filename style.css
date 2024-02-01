@@ -1,0 +1,367 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    transition: background-color 0.5s;
+}
+
+.App {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.textLarge {
+    font-family: "pretendard";
+    font-size: 24px;
+}
+
+.textMedium {
+    font-family: "pretendard";
+    font-size: 20px;
+}
+
+.textSmall {
+    font-family: "pretendard";
+    font-size: 16px;
+}
+
+.textMini {
+    font-size: 12px;
+    font-family: "pretendard";
+}
+
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+/* 공용 */
+
+.navContainer {
+    width: 100%;
+    height: 60px;
+    background-color: #80C904;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+    /* 변경된 부분 */
+}
+
+.navTitle {
+    flex-grow: 1;
+    /* 추가된 부분 */
+    text-align: center;
+    margin-left: 20px;
+    font-weight: bold;
+    color: #087C37;
+}
+
+.navTitle>span {
+    color: white;
+}
+
+.darkButton {
+    width: 30px;
+    height: 30px;
+    background-color: #F1F2F3;
+    border-radius: 8px;
+    margin-right: 20px;
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.darkButton:hover {
+    opacity: 0.8;
+    scale: 1.1;
+
+}
+
+/* 네비게이션 */
+
+.searchSection {
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 1200px;
+    height: 140px;
+    background-color: #F9F9F9;
+    margin: auto;
+    margin-top: 60px;
+    border: 1px solid #B3B3B3;
+    transition: background-color 0.5s;
+
+}
+
+.searchContainer {
+    display: flex;
+    margin-top: 40px;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.5s;
+}
+
+.searchTitle {
+    font-weight: 500;
+}
+
+.searchInput {
+    width: 483px;
+    height: 40px;
+    margin-left: 30px;
+    border-radius: 8px;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: right;
+    display: flex;
+    background-color: #DDDDDD;
+}
+
+.searchEngineContainer {
+    margin-top: 40px;
+}
+
+.searchMemoryContainer {
+    height: 20px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.searchMemoryList {
+    list-style: none;
+    display: flex;
+    margin-left: 0px;
+}
+
+.searchMemoryList>li {
+    display: flex;
+    width: auto;
+    height: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    background-color: #087C37;
+    border-radius: 4px;
+    margin-right: 10px;
+    color: white;
+    font-family: "pretendard";
+    transition: 0.3s;
+    opacity: 1;
+}
+
+.searchMemoryList>li:hover {
+    opacity: 0.8;
+    scale: 1.1;
+}
+
+/* 검색 창 */
+.contentsSection {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    background-color: #F9F9F9;
+    margin: auto;
+    border: 1px solid #B3B3B3;
+    border-top: none;
+    padding: 50px 100px 50px 100px;
+    transition: background-color 0.5s;
+
+}
+
+/* 식물 검색 결과 */
+.resultMessage {
+    font-family: "pretendard";
+    text-align: center;
+    font-weight: 500;
+}
+
+.searchLen {
+    font-family: "pretendard";
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.plantItems {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto(200px);
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+}
+
+.plantItems>.plantItem>img {
+    height: 142px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.plantItem {
+    transition: all 0.3s;
+    opacity: 1;
+    z-index: 5;
+}
+
+.plantItem>span {
+    display: none;
+}
+
+.plantItem:hover {
+    opacity: 0.8;
+    scale: 1.1;
+
+}
+
+.imgnullBox {
+    font-family: "pretendard";
+    height: 142px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DDDDDD;
+}
+
+.nameKR {
+    font-family: "pretendard";
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.FmlyKR {
+    font-family: "pretendard";
+    color: #B3B3B3;
+}
+
+/* 식물 상세 화면 */
+.detailSection {
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 120;
+    position: fixed;
+    background-color: rgb(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.detailContainer {
+    width: 645px;
+    height: 700px;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #B3B3B3;
+    padding: 40px 30px 40px 30px;
+    box-sizing: border-box;
+    transition: background-color 0.5s;
+}
+
+.detailName {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.detailEng {
+    margin-bottom: 10px;
+}
+
+.detailSub {
+    color: grey;
+    margin-bottom: 20px;
+}
+
+.detaillNullBox {
+    width: 100%;
+    height: 250px;
+    background-color: #D9D9D9;
+    margin-bottom: 20px;
+    font-family: "pretendard";
+    border-radius: 8px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailDesc {
+    width: 100%;
+    height: auto;
+}
+
+.detailContainer>img {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* 다크모드 */
+.darkMode {
+    color: white;
+    background-color: #1a1a1a;
+    transition: background-color 0.5s;
+}
+
+@media screen and (max-width: 435px) {
+    .searchContainer {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .searchEngineContainer {
+        margin-top: 20px;
+    }
+
+    .searchInput {
+        width: 280px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .searchMemoryList {
+        align-items: center;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .searchSection {
+        height: 170px;
+    }
+
+    .searchLen .loadingMessage {
+        font-size: 14px;
+    }
+
+    .contentsSection {
+        padding: 20px 20px 20px 20px;
+        text-align: center;
+    }
+
+    .plantItems {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto(400px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+}
