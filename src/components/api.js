@@ -1,7 +1,3 @@
-
-// https://cors-anywhere.herokuapp.com/corsdemo Cors 권한 없이 라이브 서버 실행 경우
-
-const corsAnywhereUrl = 'https://cors-anywhere.herokuapp.com/';
 const url = 'http://openapi.nature.go.kr/openapi/service/rest/PlantService/';
 const serviceKey = 'kHnTn7oETYUtW1eKWdJn8Go%2B6AQppJLnxRtxb3rn4JmDxLYB9bvufX6M6rDhGeiNEyajV2ADU82A%2B%2Bu1WnpSNA%3D%3D';
 
@@ -21,7 +17,7 @@ const fetchDataList = async (keyword) => {
         pageNo,
     });
 
-    let fullUrl = `${corsAnywhereUrl}${url}plntIlstrSearch?${listQuery.toString()}`;
+    let fullUrl = `${url}plntIlstrSearch?${listQuery.toString()}`;
 
     await fetch(fullUrl)
         .then(response => {
@@ -59,7 +55,7 @@ const fetchDetailData = async (keyword) => {
         q1,
     });
 
-    let fullUrl = `${corsAnywhereUrl}${url}plntIlstrInfo?${detailQuery.toString()}`;
+    let fullUrl = `${url}plntIlstrInfo?${detailQuery.toString()}`;
     await fetch(fullUrl).then(response => {
         if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`) };
         return response.text();

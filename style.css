@@ -133,7 +133,7 @@ ul {
 
 .searchEngineContainer {
     margin-top: 40px;
-}   
+}
 
 .searchMemoryContainer {
     height: 20px;
@@ -147,7 +147,7 @@ ul {
     margin-left: 0px;
 }
 
-.searchMemoryList > li {
+.searchMemoryList>li {
     display: flex;
     width: auto;
     height: 20px;
@@ -164,7 +164,7 @@ ul {
     opacity: 1;
 }
 
-.searchMemoryList > li:hover {
+.searchMemoryList>li:hover {
     opacity: 0.8;
     scale: 1.1;
 }
@@ -205,7 +205,7 @@ ul {
     grid-row-gap: 40px;
 }
 
-.plantItems > .plantItem > img {
+.plantItems>.plantItem>img {
     height: 142px;
     border-radius: 8px;
     width: 100%;
@@ -218,7 +218,7 @@ ul {
     z-index: 5;
 }
 
-.plantItem > span {
+.plantItem>span {
     display: none;
 }
 
@@ -250,6 +250,7 @@ ul {
     font-family: "pretendard";
     color: #B3B3B3;
 }
+
 /* 식물 상세 화면 */
 .detailSection {
     left: 0%;
@@ -258,7 +259,7 @@ ul {
     height: 100%;
     z-index: 120;
     position: fixed;
-    background-color: rgb(0,0,0,0.4);
+    background-color: rgb(0, 0, 0, 0.4);
     justify-content: center;
     align-items: center;
     display: none;
@@ -269,6 +270,7 @@ ul {
     height: 700px;
     background-color: white;
     border-radius: 8px;
+    border: 1px solid #B3B3B3;
     padding: 40px 30px 40px 30px;
     box-sizing: border-box;
     transition: background-color 0.5s;
@@ -306,7 +308,7 @@ ul {
     height: auto;
 }
 
-.detailContainer > img {
+.detailContainer>img {
     width: 100%;
     height: 250px;
     margin-bottom: 10px;
@@ -318,4 +320,48 @@ ul {
     color: white;
     background-color: #1a1a1a;
     transition: background-color 0.5s;
+}
+
+@media screen and (max-width: 435px) {
+    .searchContainer {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .searchEngineContainer {
+        margin-top: 20px;
+    }
+
+    .searchInput {
+        width: 280px;
+        text-align: center;
+        margin: auto;
+    }
+
+    .searchMemoryList {
+        align-items: center;
+        justify-content: center;
+        margin-top: 5px;
+    }
+
+    .searchSection {
+        height: 170px;
+    }
+
+    .searchLen .loadingMessage {
+        font-size: 14px;
+    }
+
+    .contentsSection {
+        padding: 20px 20px 20px 20px;
+        text-align: center;
+    }
+
+    .plantItems {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto(400px);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
 }
